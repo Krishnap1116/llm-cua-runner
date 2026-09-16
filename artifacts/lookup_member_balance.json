@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "capability_id": "lookup_member_balance",
+    "name": "Look Up Member Savings Balance",
+    "schema_version": "1.0.0",
+    "version": 1,
+    "created_from_goal": "Search for member 10234 and use the extract action to capture their current savings balance as a named output, then call done. This is a read-only lookup -- do not attempt to open any account or make any changes.",
+    "discovery_run_id": "run_20260916_150933",
+    "target_app": {
+      "vendor": "mockbank",
+      "app_name": "teller-console",
+      "base_url": "http://127.0.0.1:5000/",
+      "app_version": null
+    }
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "required": true,
+      "description": "Value for field 'Member ID or Name'",
+      "min": null,
+      "max": null,
+      "max_length": null,
+      "pattern": null
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savings_balance",
+      "type": "string",
+      "description": "Extracted from 'Savings Balance'",
+      "produced_by_step": "step_04"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "step_01",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "type",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "textbox",
+          "name": "Member ID or Name",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "value": {
+        "source": "input",
+        "name": "member_id"
+      }
+    },
+    {
+      "step_id": "step_02",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "button",
+          "name": "Search",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_03",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "css_structural",
+          "role": null,
+          "name": null,
+          "css": "table.results tr:nth-child(2) a",
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_04",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "extract",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "cell",
+          "name": "Savings Balance",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "output": {
+        "source": "output",
+        "name": "savings_balance"
+      }
+    }
+  ],
+  "checkpoint": {
+    "kind": "all_of",
+    "url_pattern": null,
+    "locator": null,
+    "region": null,
+    "text_pattern": null,
+    "status_code": null,
+    "all_of": [
+      {
+        "kind": "url_match",
+        "url_pattern": "/member/*",
+        "locator": null,
+        "region": null,
+        "text_pattern": null,
+        "status_code": null,
+        "all_of": null
+      },
+      {
+        "kind": "element_present",
+        "url_pattern": null,
+        "locator": {
+          "primary": {
+            "strategy": "role_name",
+            "role": "cell",
+            "name": "Savings Balance",
+            "css": null,
+            "scope": null
+          },
+          "fallback": []
+        },
+        "region": null,
+        "text_pattern": null,
+        "status_code": null,
+        "all_of": null
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "name": "member_not_found",
+      "kind": "business_outcome",
+      "business_result": "not_found",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "locator": null,
+        "text_pattern": "No member found",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "message": "No member exists with the given ID."
+    }
+  ],
+  "policy": {
+    "risk_level": "safe",
+    "approval_state": "draft",
+    "allowed_scope": {
+      "domains": [
+        "127.0.0.1:5000",
+        "localhost:5000"
+      ],
+      "routes": [
+        "/login",
+        "/logout",
+        "/search",
+        "/member/*"
+      ],
+      "action_types": [
+        "navigate",
+        "click",
+        "type",
+        "select",
+        "extract",
+        "assert"
+      ]
+    },
+    "idempotency": null,
+    "allow_assisted_fallback": false
+  },
+  "tenant_overrides": {}
+}

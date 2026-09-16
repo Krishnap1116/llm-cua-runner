@@ -1,0 +1,67 @@
+[
+  {
+    "step_id": "step_01",
+    "action": "type",
+    "tool_input": {
+      "role": "textbox",
+      "name": "Member ID or Name",
+      "value": "10234"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/search",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_150933/step_01.png",
+    "param_decision": {
+      "param_name": "member_id",
+      "param_type": "string",
+      "parameterize": true
+    },
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_02",
+    "action": "click",
+    "tool_input": {
+      "role": "button",
+      "name": "Search"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/search?q=10234",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_150933/step_02.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_03",
+    "action": "click",
+    "tool_input": {
+      "role": "link",
+      "name": "Alicia Nguyen"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/10234",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_150933/step_03.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_04",
+    "action": "extract",
+    "tool_input": {
+      "role": "cell",
+      "name": "Savings Balance",
+      "output_name": "savings_balance"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/10234",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_150933/step_04.png",
+    "param_decision": {
+      "is_output": true,
+      "output_name": "savings_balance"
+    },
+    "excluded_from_artifact": false
+  }
+]

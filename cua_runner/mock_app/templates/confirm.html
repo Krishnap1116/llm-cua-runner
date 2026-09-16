@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="panel">
+{% if account_number %}
+<tr><td class="row">
+  <div role="status" class="flash">Sub-account opened successfully.</div>
+  <table class="detail">
+    <tr><td>Account Number</td><td><strong>{{ account_number }}</strong></td></tr>
+    <tr><td>Nickname</td><td>{{ pending.nickname }}</td></tr>
+    <tr><td>Initial Deposit</td><td>${{ "%.2f"|format(pending.initial_deposit) }}</td></tr>
+  </table>
+</td></tr>
+{% else %}
+<tr><td class="row">
+  <table class="detail">
+    <tr><td>Account Type</td><td>{{ pending.account_type }}</td></tr>
+    <tr><td>Initial Deposit</td><td>${{ "%.2f"|format(pending.initial_deposit) }}</td></tr>
+    <tr><td>Nickname</td><td>{{ pending.nickname }}</td></tr>
+  </table>
+  <form method="post" action="/member/{{ member_id }}/new-subaccount/confirm">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <button type="submit">Confirm</button>
+  </form>
+  <a href="/member/{{ member_id }}/new-subaccount">Cancel</a>
+</td></tr>
+{% endif %}
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+  "artifact": "artifacts/lookup_member_balance.json",
+  "params": {
+    "member_id": "11045"
+  },
+  "status": "success",
+  "message": "Capability completed successfully.",
+  "outputs": {
+    "savings_balance": "$5500.00"
+  },
+  "business_result": null,
+  "debug": null,
+  "retry_guidance": null,
+  "drift_signals": [],
+  "assisted_fallback_used": []
+}

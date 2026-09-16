@@ -1,0 +1,146 @@
+[
+  {
+    "step_id": "step_01",
+    "action": "type",
+    "tool_input": {
+      "role": "textbox",
+      "name": "Member ID or Name",
+      "value": "66660"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/search",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_01.png",
+    "param_decision": {
+      "param_name": "member_id",
+      "param_type": "string",
+      "parameterize": true
+    },
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_02",
+    "action": "click",
+    "tool_input": {
+      "role": "button",
+      "name": "Search"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/search?q=66660",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_02.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_03",
+    "action": "navigate",
+    "tool_input": {
+      "url": "/member/66660"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_03.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_04",
+    "action": "click",
+    "tool_input": {
+      "role": "link",
+      "name": "Open Sub-Account"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660/new-subaccount",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_04.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_05",
+    "action": "select",
+    "tool_input": {
+      "role": "combobox",
+      "name": "Account Type",
+      "value": "Sub-Savings"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660/new-subaccount",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_05.png",
+    "param_decision": {
+      "param_name": null,
+      "parameterize": false
+    },
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_06",
+    "action": "type",
+    "tool_input": {
+      "role": "textbox",
+      "name": "Initial Deposit",
+      "value": "100"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660/new-subaccount",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_06.png",
+    "param_decision": {
+      "param_name": "initial_deposit",
+      "param_type": "number",
+      "parameterize": true
+    },
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_07",
+    "action": "type",
+    "tool_input": {
+      "role": "textbox",
+      "name": "Nickname",
+      "value": "Test"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660/new-subaccount",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_07.png",
+    "param_decision": {
+      "param_name": "nickname",
+      "param_type": "string",
+      "parameterize": true
+    },
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_08",
+    "action": "click",
+    "tool_input": {
+      "role": "button",
+      "name": "Open Sub-Account"
+    },
+    "success": true,
+    "error": null,
+    "page_url_after": "http://127.0.0.1:5000/member/66660/new-subaccount/confirm",
+    "screenshot": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/runs/run_20260916_151427/step_08.png",
+    "param_decision": null,
+    "excluded_from_artifact": false
+  },
+  {
+    "step_id": "step_09",
+    "action": "click",
+    "tool_input": {
+      "role": "button",
+      "name": "Confirm"
+    },
+    "success": false,
+    "error": "Human declined to allow the risky click \"Confirm\".",
+    "page_url_after": null,
+    "screenshot": null,
+    "param_decision": null,
+    "excluded_from_artifact": false
+  }
+]

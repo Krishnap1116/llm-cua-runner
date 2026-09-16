@@ -1,0 +1,18 @@
+{
+  "artifact": "artifacts/open_savings_subaccount.json",
+  "params": {
+    "member_id": "11045",
+    "initial_deposit": 250,
+    "nickname": "Emergency Reserve"
+  },
+  "status": "success",
+  "message": "Capability completed successfully.",
+  "outputs": {
+    "sub_account_number": "SA-11045-001"
+  },
+  "business_result": null,
+  "debug": null,
+  "retry_guidance": null,
+  "drift_signals": [],
+  "assisted_fallback_used": []
+}

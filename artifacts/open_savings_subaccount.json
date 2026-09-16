@@ -1,0 +1,533 @@
+{
+  "metadata": {
+    "capability_id": "open_savings_subaccount",
+    "name": "Open Savings Sub-Account",
+    "schema_version": "1.0.0",
+    "version": 1,
+    "created_from_goal": "Open a new sub-account for member 10234 with an initial deposit of 500 and nickname 'Vacation Fund'. Confirm the action, then read and report the resulting account number.",
+    "discovery_run_id": "run_20260916_142818",
+    "target_app": {
+      "vendor": "mockbank",
+      "app_name": "teller-console",
+      "base_url": "http://127.0.0.1:5000/",
+      "app_version": null
+    }
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "required": true,
+      "description": "Value for field 'Member ID or Name'",
+      "min": null,
+      "max": null,
+      "max_length": null,
+      "pattern": null
+    },
+    {
+      "name": "initial_deposit",
+      "type": "number",
+      "required": true,
+      "description": "Value for field 'Initial Deposit'",
+      "min": null,
+      "max": null,
+      "max_length": null,
+      "pattern": null
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "required": true,
+      "description": "Value for field 'Nickname'",
+      "min": null,
+      "max": null,
+      "max_length": null,
+      "pattern": null
+    }
+  ],
+  "outputs": [
+    {
+      "name": "sub_account_number",
+      "type": "string",
+      "description": "Extracted from 'Account Number'",
+      "produced_by_step": "step_10"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "step_01",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "type",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "textbox",
+          "name": "Member ID or Name",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "value": {
+        "source": "input",
+        "name": "member_id"
+      }
+    },
+    {
+      "step_id": "step_02",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "button",
+          "name": "Search",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_03",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "css_structural",
+          "role": null,
+          "name": null,
+          "css": "table.results tr:nth-child(2) a",
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_04",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "link",
+          "name": "Open Sub-Account",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_05",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "select",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "combobox",
+          "name": "Account Type",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "value": {
+        "source": "literal",
+        "value": "Sub-Savings"
+      }
+    },
+    {
+      "step_id": "step_06",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "type",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "textbox",
+          "name": "Initial Deposit",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "value": {
+        "source": "input",
+        "name": "initial_deposit"
+      }
+    },
+    {
+      "step_id": "step_07",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "type",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "textbox",
+          "name": "Nickname",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "value": {
+        "source": "input",
+        "name": "nickname"
+      }
+    },
+    {
+      "step_id": "step_08",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "button",
+          "name": "Open Sub-Account",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_09",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": true,
+      "action": "click",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "button",
+          "name": "Confirm",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      }
+    },
+    {
+      "step_id": "step_10",
+      "wait_policy": {
+        "timeout_ms": 5000,
+        "retry_count": 1,
+        "backoff_ms": 500
+      },
+      "is_commit_step": false,
+      "action": "extract",
+      "target": {
+        "primary": {
+          "strategy": "role_name",
+          "role": "cell",
+          "name": "Account Number",
+          "css": null,
+          "scope": null
+        },
+        "fallback": []
+      },
+      "output": {
+        "source": "output",
+        "name": "sub_account_number"
+      }
+    }
+  ],
+  "checkpoint": {
+    "kind": "all_of",
+    "url_pattern": null,
+    "locator": null,
+    "region": null,
+    "text_pattern": null,
+    "status_code": null,
+    "all_of": [
+      {
+        "kind": "url_match",
+        "url_pattern": "/member/*/new-subaccount/confirm",
+        "locator": null,
+        "region": null,
+        "text_pattern": null,
+        "status_code": null,
+        "all_of": null
+      },
+      {
+        "kind": "element_present",
+        "url_pattern": null,
+        "locator": {
+          "primary": {
+            "strategy": "role_name",
+            "role": "cell",
+            "name": "Account Number",
+            "css": null,
+            "scope": null
+          },
+          "fallback": []
+        },
+        "region": null,
+        "text_pattern": null,
+        "status_code": null,
+        "all_of": null
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "name": "server_error",
+      "kind": "hard_failure",
+      "detect": {
+        "kind": "status_code",
+        "url_pattern": null,
+        "locator": null,
+        "region": null,
+        "text_pattern": null,
+        "status_code": 500,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": null,
+      "message": "The application returned an unexpected server error."
+    },
+    {
+      "name": "session_expired",
+      "kind": "recoverable",
+      "detect": {
+        "kind": "url_match",
+        "url_pattern": "/login",
+        "locator": null,
+        "region": null,
+        "text_pattern": null,
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "reauthenticate_and_resume",
+      "business_result": null,
+      "message": "The session expired mid-flow; re-authenticate and resume."
+    },
+    {
+      "name": "member_not_found",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "No member found",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "not_found",
+      "message": "No member exists with the given ID."
+    },
+    {
+      "name": "member_restricted",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "restricted",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "restricted",
+      "message": "The member's account is restricted; the action was not attempted."
+    },
+    {
+      "name": "member_closed",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "closed",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "closed",
+      "message": "The member's account is closed; the action was not attempted."
+    },
+    {
+      "name": "record_locked",
+      "kind": "recoverable",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "locked by another session",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "wait_and_retry",
+      "business_result": null,
+      "message": "The record is locked by another session; safe to retry shortly."
+    },
+    {
+      "name": "subaccount_cap_reached",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "maximum number",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "cap_reached",
+      "message": "This member already has the maximum number of sub-accounts."
+    },
+    {
+      "name": "validation_error",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "must be at least",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "validation_error",
+      "message": "The submitted deposit did not meet the minimum requirement."
+    },
+    {
+      "name": "duplicate_nickname",
+      "kind": "business_outcome",
+      "detect": {
+        "kind": "text_in_region",
+        "url_pattern": null,
+        "locator": null,
+        "region": {
+          "strategy": "role_name",
+          "role": "alert",
+          "name": null,
+          "css": null,
+          "scope": null
+        },
+        "text_pattern": "already exists",
+        "status_code": null,
+        "all_of": null
+      },
+      "recovery": "none",
+      "business_result": "validation_error",
+      "message": "A sub-account with that nickname already exists for this member."
+    }
+  ],
+  "policy": {
+    "risk_level": "irreversible",
+    "approval_state": "approved",
+    "allowed_scope": {
+      "domains": [
+        "127.0.0.1:5000",
+        "localhost:5000"
+      ],
+      "routes": [
+        "/login",
+        "/logout",
+        "/search",
+        "/member/*"
+      ],
+      "action_types": [
+        "navigate",
+        "click",
+        "type",
+        "select",
+        "extract",
+        "assert"
+      ]
+    },
+    "idempotency": {
+      "pre_check": null,
+      "on_retry": "abort_and_escalate"
+    },
+    "allow_assisted_fallback": false
+  },
+  "tenant_overrides": {}
+}

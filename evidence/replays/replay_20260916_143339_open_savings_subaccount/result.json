@@ -1,0 +1,20 @@
+{
+  "artifact": "/tmp/escalation_demo_artifact.json",
+  "params": {
+    "member_id": "11187",
+    "initial_deposit": 50,
+    "nickname": "Escalation Demo"
+  },
+  "status": "hard_failure",
+  "message": "Step step_04 failed and matched no known outcome.",
+  "outputs": {},
+  "business_result": null,
+  "debug": {
+    "step_id": "step_04",
+    "expected": "click",
+    "observed": "could not resolve any locator strategy (tried 1): primary={'strategy': <LocatorStrategyKind.ROLE_NAME: 'role_name'>, 'role': 'link', 'name': 'This Button Does Not Exist (deliberately broken for escalation demo)', 'css': None, 'scope': None}"
+  },
+  "retry_guidance": "abort_and_escalate",
+  "drift_signals": [],
+  "assisted_fallback_used": []
+}

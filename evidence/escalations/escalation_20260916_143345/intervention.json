@@ -1,0 +1,12 @@
+{
+  "escalation_id": "escalation_20260916_143345",
+  "source": "replay",
+  "capability_or_goal": "open_savings_subaccount",
+  "step_id": "step_04",
+  "reason": "Step failed, no known outcome matched: could not resolve any locator strategy (tried 1): primary={'strategy': <LocatorStrategyKind.ROLE_NAME: 'role_name'>, 'role': 'link', 'name': 'This Button Does Not Exist (deliberately broken for escalation demo)', 'css': None, 'scope': None}",
+  "url": "http://127.0.0.1:5000/member/11187",
+  "screenshot_path": "/Users/krishnapriyankaponnaganti/Desktop/llm-cua-runner/evidence/escalations/escalation_20260916_143345/at_escalation.png",
+  "accessibility_snapshot": "- table:\n  - rowgroup:\n    - row \"Name Sam Okafor Member ID 11187 Savings Balance $1150.75 Checking Balance $600.00 Sub-Accounts 2 Open Sub-Account\":\n      - cell \"Name Sam Okafor Member ID 11187 Savings Balance $1150.75 Checking Balance $600.00 Sub-Accounts 2 Open Sub-Account\":\n        - table:\n          - rowgroup:\n            - row \"Name Sam Okafor Member ID 11187 Savings Balance $1150.75 Checking Balance $600.00 Sub-Accounts 2\":\n              - cell \"Name Sam Okafor Member ID 11187 Savings Balance $1150.75 Checking Balance $600.00 Sub-Accounts 2\":\n                - table:\n                  - rowgroup:\n                    - row \"Name Sam Okafor\":\n                      - cell \"Name\"\n                      - cell \"Sam Okafor\"\n                    - row \"Member ID 11187\":\n                      - cell \"Member ID\"\n                      - cell \"11187\"\n                    - row \"Savings Balance $1150.75\":\n                      - cell \"Savings Balance\"\n                      - cell \"$1150.75\"\n                    - row \"Checking Balance $600.00\":\n                      - cell \"Checking Balance\"\n                      - cell \"$600.00\"\n                    - row \"Sub-Accounts 2\":\n                      - cell \"Sub-Accounts\"\n                      - cell \"2\"\n            - row \"Open Sub-Account\":\n              - cell \"Open Sub-Account\":\n                - link \"Open Sub-Account\":\n                  - /url: /member/11187/new-subaccount",
+  "human_notes": "Opened the member page manually and confirmed the real button is labeled differently than the artifact expected -- this needs a re-record, but I let the demo continue.",
+  "resolved": true
+}

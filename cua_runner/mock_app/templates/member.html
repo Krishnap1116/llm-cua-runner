@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="panel">
+{% if member is none %}
+<tr><td class="row"><div role="alert" class="flash">No member found for ID {{ member_id }}</div></td></tr>
+{% else %}
+<tr><td class="row">
+  <table class="detail">
+    <tr><td>Name</td><td>{{ member.name }}</td></tr>
+    <tr><td>Member ID</td><td>{{ member_id }}</td></tr>
+    <tr><td>Savings Balance</td><td>${{ "%.2f"|format(member.savings) }}</td></tr>
+    <tr><td>Checking Balance</td><td>${{ "%.2f"|format(member.checking) }}</td></tr>
+    <tr><td>Sub-Accounts</td><td>{{ member.subaccounts|length }}</td></tr>
+  </table>
+</td></tr>
+{% if status != "active" %}
+<tr><td class="row">
+  <div role="alert" class="flash">
+  {% if status == "restricted" %}This account is restricted. Actions are unavailable.
+  {% elif status == "closed" %}This account is closed. No actions are available.
+  {% elif status == "locked" %}This record is currently locked by another session. Try again shortly.
+  {% endif %}
+  </div>
+</td></tr>
+{% endif %}
+<tr><td class="row">
+  <a href="/member/{{ member_id }}/new-subaccount">Open Sub-Account</a>
+</td></tr>
+{% endif %}
+</table>
+{% endblock %}

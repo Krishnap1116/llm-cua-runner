@@ -1,0 +1,16 @@
+{
+  "artifact": "artifacts/open_savings_subaccount.json",
+  "params": {
+    "member_id": "99999",
+    "initial_deposit": 250,
+    "nickname": "Nobody"
+  },
+  "status": "business_outcome",
+  "message": "No member exists with the given ID.",
+  "outputs": {},
+  "business_result": "not_found",
+  "debug": null,
+  "retry_guidance": null,
+  "drift_signals": [],
+  "assisted_fallback_used": []
+}

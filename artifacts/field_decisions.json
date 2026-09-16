@@ -1,0 +1,29 @@
+{
+  "cell::Account Number": {
+    "is_output": true,
+    "output_name": "sub_account_number"
+  },
+  "cell::Savings Balance": {
+    "is_output": true,
+    "output_name": "savings_balance"
+  },
+  "combobox::Account Type": {
+    "param_name": null,
+    "parameterize": false
+  },
+  "textbox::Initial Deposit": {
+    "param_name": "initial_deposit",
+    "param_type": "number",
+    "parameterize": true
+  },
+  "textbox::Member ID or Name": {
+    "param_name": "member_id",
+    "param_type": "string",
+    "parameterize": true
+  },
+  "textbox::Nickname": {
+    "param_name": "nickname",
+    "param_type": "string",
+    "parameterize": true
+  }
+}

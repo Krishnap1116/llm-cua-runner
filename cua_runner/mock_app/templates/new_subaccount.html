@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="panel">
+{% if member is none %}
+<tr><td class="row"><div role="alert" class="flash">No member found for ID {{ member_id }}</div></td></tr>
+{% elif not eligible %}
+<tr><td class="row">
+  <div role="alert" class="flash">
+  {% if reason == "restricted" %}This account is restricted. A new sub-account cannot be opened.
+  {% elif reason == "closed" %}This account is closed. A new sub-account cannot be opened.
+  {% elif reason == "locked" %}This record is currently locked by another session. Try again shortly.
+  {% elif reason == "cap_reached" %}This member already has the maximum number of sub-accounts.
+  {% else %}This action is unavailable for this member.
+  {% endif %}
+  </div>
+</td></tr>
+{% else %}
+<tr><td class="row">
+{% if error %}<div role="alert" class="flash">{{ error }}</div>{% endif %}
+<form method="post" action="/member/{{ member_id }}/new-subaccount">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+  <table>
+    <tr><td><label for="account_type">Account Type</label></td>
+        <td><select id="account_type" name="account_type">
+          <option value="">-- choose --</option>
+          <option value="sub_savings" {% if form_values.get('account_type')=='sub_savings' %}selected{% endif %}>Sub-Savings</option>
+          <option value="sub_checking" {% if form_values.get('account_type')=='sub_checking' %}selected{% endif %}>Sub-Checking</option>
+        </select></td></tr>
+    <tr><td><label for="initial_deposit">Initial Deposit</label></td>
+        <td><input type="text" id="initial_deposit" name="initial_deposit" value="{{ form_values.get('initial_deposit','') }}"></td></tr>
+    <tr><td><label for="nickname">Nickname</label></td>
+        <td><input type="text" id="nickname" name="nickname" value="{{ form_values.get('nickname','') }}"></td></tr>
+  </table>
+  <button type="submit">Open Sub-Account</button>
+</form>
+</td></tr>
+{% endif %}
+</table>
+{% endblock %}
